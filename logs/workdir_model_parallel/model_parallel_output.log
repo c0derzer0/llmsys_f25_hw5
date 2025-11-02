@@ -1,0 +1,20 @@
+(minitorch-cuda-2) [tatavart@v024 llmsys_f25_hw5]$ python project/run_pipeline.py --model_parallel_mode='model_parallel'
+/jet/home/tatavart/.conda/envs/minitorch-cuda-2/lib/python3.9/site-packages/huggingface_hub/file_download.py:942: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+[00:00:00] Pre-processing sequences       ██████████████████████████████████████████████████████████████████████ 0        /        0
+[00:00:00] Tokenize words                 ██████████████████████████████████████████████████████████████████████ 19729    /    19729
+[00:00:00] Count pairs                    ██████████████████████████████████████████████████████████████████████ 19729    /    19729
+[00:00:00] Compute merges                 ██████████████████████████████████████████████████████████████████████ 17232    /    17232
+Training (epoch 0 / 2): 100%|██████████████████████████████████| 157/157 [00:49<00:00,  3.17it/s, loss=5.75, tokens_per_sec=3.73e+4]
+Epoch 0: Training Time = 49.59175157546997, Tokens_per_sec = 12905.371955375118
+Evaluating (epoch 0 / 2): 100%|██████████████████████████████████████████████████████████| 32/32 [00:03<00:00,  9.02it/s, loss=5.24]
+Epoch 0: Validation Loss = 5.755936414003372
+Generating epoch 0 / 2: 100%|█████████████████████████████████████████████████████████████████████| 100/100 [00:24<00:00,  4.01it/s]
+Epoch 0: {'bleu': 1.6806132022705542}
+Training (epoch 1 / 2): 100%|███████████████████████████████████| 157/157 [00:49<00:00,  3.20it/s, loss=5.07, tokens_per_sec=4.5e+4]
+Epoch 1: Training Time = 49.11829352378845, Tokens_per_sec = 13029.768627650754
+Evaluating (epoch 1 / 2): 100%|██████████████████████████████████████████████████████████| 32/32 [00:03<00:00,  9.01it/s, loss=4.91]
+Epoch 1: Validation Loss = 5.431616261601448
+Generating epoch 1 / 2: 100%|█████████████████████████████████████████████████████████████████████| 100/100 [00:39<00:00,  2.51it/s]
+Epoch 1: {'bleu': 3.4317537615561156}
+Training time: avg:49.35502254962921, std:0.23672902584075928,         tokens_per_second: avg: 12967.570291512937, std:62.19833613781793

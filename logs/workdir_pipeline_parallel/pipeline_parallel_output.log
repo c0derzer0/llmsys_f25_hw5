@@ -1,0 +1,21 @@
+(minitorch-cuda-2) [tatavart@v024 llmsys_f25_hw5]$ python project/run_pipeline.py --model_parallel_mode='pipeline_parallel'
+/jet/home/tatavart/.conda/envs/minitorch-cuda-2/lib/python3.9/site-packages/huggingface_hub/file_download.py:942: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+[00:00:00] Pre-processing sequences       ██████████████████████████████████████████████████████████████████████████████████████ 0        /        0
+[00:00:00] Tokenize words                 ██████████████████████████████████████████████████████████████████████████████████████ 19729    /    19729
+[00:00:00] Count pairs                    ██████████████████████████████████████████████████████████████████████████████████████ 19729    /    19729
+[00:00:00] Compute merges                 ██████████████████████████████████████████████████████████████████████████████████████ 17232    /    17232
+Training (epoch 0 / 2): 100%|██████████████████████████████████████████████████| 157/157 [00:39<00:00,  3.94it/s, loss=5.65, tokens_per_sec=4.27e+4]
+Epoch 0: Training Time = 39.81813955307007, Tokens_per_sec = 16073.076421539
+Evaluating (epoch 0 / 2): 100%|██████████████████████████████████████████████████████████████████████████| 32/32 [00:02<00:00, 11.29it/s, loss=5.19]
+Epoch 0: Validation Loss = 5.673130497336388
+Generating epoch 0 / 2: 100%|█████████████████████████████████████████████████████████████████████████████████████| 100/100 [00:37<00:00,  2.68it/s]
+Epoch 0: {'bleu': 2.360965051271694}
+Training (epoch 1 / 2): 100%|██████████████████████████████████████████████████| 157/157 [00:39<00:00,  3.97it/s, loss=4.97, tokens_per_sec=4.03e+4]
+Epoch 1: Training Time = 39.51207971572876, Tokens_per_sec = 16197.57817367513
+Evaluating (epoch 1 / 2): 100%|██████████████████████████████████████████████████████████████████████████| 32/32 [00:02<00:00, 11.23it/s, loss=4.97]
+Epoch 1: Validation Loss = 5.395030632615089
+Generating epoch 1 / 2: 100%|█████████████████████████████████████████████████████████████████████████████████████| 100/100 [00:46<00:00,  2.13it/s]
+Epoch 1: {'bleu': 3.082368450425173}
+Training time: avg:39.665109634399414, std:0.1530299186706543,         tokens_per_second: avg: 16135.327297607066, std:62.25087606806483
+(minitorch-cuda-2) [tatavart@v024 llmsys_f25_hw5]$ 

@@ -35,7 +35,7 @@ def run_pp(
     learning_rate=1e-4,
     device='cuda',
     model_parallel_mode=None):
-    workdir = f'./workdir_model_exps'
+    workdir = f'./workdir'
     os.makedirs(workdir, exist_ok=True)
 
     config = AutoConfig.from_pretrained('gpt2')

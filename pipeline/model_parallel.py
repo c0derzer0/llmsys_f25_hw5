@@ -46,6 +46,7 @@ class GPT2ModelParallel(GPT2ModelCustom):
         for block in self.h:
             blocks.append(block)
             device = _retrieve_device(block)
+            #print("block - device", (device, block))
             blocks.append(WithDevice(ExtractFirstItem(), device))
         
         module_list = nn.Sequential(*blocks)

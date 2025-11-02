@@ -1,5 +1,6 @@
 import sys
 from pathlib import Path
+from turtle import back
 
 cousin_dir = Path(__file__).resolve().parents[1]
 sys.path.append(str(cousin_dir))
@@ -32,7 +33,11 @@ def average_gradients(model):
     3. Average the gradients over the world_size (total number of devices)
     '''
     # BEGIN ASSIGN5_1_2
-    raise NotImplementedError("Data Parallel Not Implemented Yet")
+    world_size = dist.get_world_size()
+    for paramter in model.parameters():
+        if paramter.grad is not None:
+            dist.all_reduce(paramter.grad.data, op=dist.ReduceOp.SUM)
+        paramter.grad.data /= world_size
     # END ASSIGN5_1_2
 
 def setup(rank, world_size, backend):
@@ -42,8 +47,13 @@ def setup(rank, world_size, backend):
     2. Use `torch.distributed` to init the process group
     '''
     # BEGIN ASSIGN5_1_2
-    raise NotImplementedError("Data Parallel Not Implemented Yet")
+    os.environ["MASTER_ADDR"] = 'localhost'
+    os.environ["MASTER_PORT"] = '11868'
+
+    dist.init_process_group(backend=backend, world_size=world_size, rank=rank)
+
     # END ASSIGN5_1_2
+
 
 
 def run_dp(
@@ -67,7 +77,7 @@ def run_dp(
     optimizer = torch.optim.AdamW(model.parameters(), lr=learning_rate)
 
     dataset = {
-        split: datasets.load_dataset(dataset_name, split=split)['translation']
+        split: datasets.load_dataset(dataset_name, split=split, trust_remote_code=True)['translation']
         for split in ['train', 'validation', 'test']
     }
     src_key, tgt_key = 'de', 'en'
@@ -162,7 +172,8 @@ def run_dp(
         # To compute the throughput, you need to sum up the tokens_per_sec across all the devices based on epochs
         print(f'Rank {rank} training time: avg:{np.mean(total_time)}, std:{np.std(total_time)}, \
         tokens_per_second: avg: {np.mean(total_tokens_per_sec)}, std:{np.std(total_tokens_per_sec)}')
-
+    
+    dist.destroy_process_group() 
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
@@ -188,8 +199,16 @@ if __name__ == '__main__':
     2. You should start the processes to work and terminate resources properly
     '''
     # BEGIN ASSIGN5_1_3
-    world_size = None  # TODO: Define the number of GPUs
-    backend = None  # TODO: Define your backend for communication, we suggest using 'nccl'
+    world_size = args.world_size  # TODO: Define the number of GPUs
+    backend = 'nccl'  # TODO: Define your backend for communication, we suggest using 'nccl'
+    for rank in range(world_size):
+        p = Process(target=run_dp, args=(rank, world_size, backend, args.dataset, 
+        args.model_max_length, args.n_epochs, args.batch_size, args.learning_rate))
+        p.start()
+        processes.append(p)
+
+    for p in processes:
+        p.join()
+
     
-    raise NotImplementedError("Data Parallel Not Implemented Yet")
     # END ASSIGN5_1_3

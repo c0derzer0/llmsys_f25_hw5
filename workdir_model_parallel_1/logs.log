@@ -1,0 +1,19 @@
+/jet/home/tatavart/.conda/envs/minitorch-cuda-2/lib/python3.9/site-packages/huggingface_hub/file_download.py:942: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+[00:00:00] Pre-processing sequences       ████████████████████████████████████████████████████████ 0        /        0
+[00:00:00] Tokenize words                 ████████████████████████████████████████████████████████ 19729    /    19729
+[00:00:00] Count pairs                    ████████████████████████████████████████████████████████ 19729    /    19729
+[00:00:00] Compute merges                 ████████████████████████████████████████████████████████ 17232    /    17232
+Training (epoch 0 / 2): 100%|█████████████████████| 157/157 [00:49<00:00,  3.16it/s, loss=5.65, tokens_per_sec=3.4e+4]
+Epoch 0: Training Time = 49.70006012916565, Tokens_per_sec = 12877.248002048727
+Evaluating (epoch 0 / 2): 100%|████████████████████████████████████████████| 32/32 [00:03<00:00,  8.79it/s, loss=5.17]
+Epoch 0: Validation Loss = 5.665975168347359
+Generating epoch 0 / 2: 100%|███████████████████████████████████████████████████████| 100/100 [00:22<00:00,  4.40it/s]
+Epoch 0: {'bleu': 1.3277175863998225}
+Training (epoch 1 / 2): 100%|████████████████████| 157/157 [00:49<00:00,  3.17it/s, loss=5.02, tokens_per_sec=4.08e+4]
+Epoch 1: Training Time = 49.46781802177429, Tokens_per_sec = 12937.704260945786
+Evaluating (epoch 1 / 2): 100%|████████████████████████████████████████████| 32/32 [00:03<00:00,  8.78it/s, loss=5.02]
+Epoch 1: Validation Loss = 5.387305349111557
+Generating epoch 1 / 2: 100%|███████████████████████████████████████████████████████| 100/100 [00:38<00:00,  2.60it/s]
+Epoch 1: {'bleu': 2.780325842142165}
+Training time: avg:49.58393907546997, std:0.11612105369567871,         tokens_per_second: avg: 12907.476131497257, std:30.228129448529216

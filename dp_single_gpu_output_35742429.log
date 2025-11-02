@@ -1,0 +1,60 @@
+Sat Nov  1 01:38:32 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 560.35.03              Driver Version: 560.35.03      CUDA Version: 12.6     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA H100 80GB HBM3          On  |   00000000:87:00.0 Off |                    0 |
+| N/A   13C    P0             68W /  700W |       1MiB /  81559MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+Job started at: Sat Nov  1 01:38:32 EDT 2025
+Running on node: w003.ib.bridges2.psc.edu
+Job ID: 35742429
+Working directory: /jet/home/tatavart/11986-llmsys/llmsys_f25_hw5
+Running single GPU experiment (world_size=1, batch_size=64)
+
+
+
+Epoch 0 on Rank 0: Training Time = 16.332218885421753, Tokens_per_sec = 248052.81512138597
+Epoch 0 on Rank 0: Validation Loss = 6.052046746015549
+Epoch 0 on Rank 0: {'bleu': 0.5918790611940736}
+Epoch 1 on Rank 0: Training Time = 14.68990969657898, Tokens_per_sec = 256096.15612019817
+Epoch 1 on Rank 0: Validation Loss = 5.563019752502441
+Epoch 1 on Rank 0: {'bleu': 2.9835768510536913}
+Epoch 2 on Rank 0: Training Time = 14.76845097541809, Tokens_per_sec = 255204.1639957038
+Epoch 2 on Rank 0: Validation Loss = 5.3505361676216125
+Epoch 2 on Rank 0: {'bleu': 3.6530623268989033}
+Epoch 3 on Rank 0: Training Time = 14.731953620910645, Tokens_per_sec = 254246.76890799846
+Epoch 3 on Rank 0: Validation Loss = 5.212931245565414
+Epoch 3 on Rank 0: {'bleu': 4.815742777183701}
+Epoch 4 on Rank 0: Training Time = 14.789393186569214, Tokens_per_sec = 253402.56708528678
+Epoch 4 on Rank 0: Validation Loss = 5.123625338077545
+Epoch 4 on Rank 0: {'bleu': 4.224887856402102}
+Epoch 5 on Rank 0: Training Time = 14.559137344360352, Tokens_per_sec = 257490.08595836445
+Epoch 5 on Rank 0: Validation Loss = 5.061821132898331
+Epoch 5 on Rank 0: {'bleu': 5.060404408325368}
+Epoch 6 on Rank 0: Training Time = 14.556406259536743, Tokens_per_sec = 257433.34025250716
+Epoch 6 on Rank 0: Validation Loss = 5.175322979688644
+Epoch 6 on Rank 0: {'bleu': 4.694406824661533}
+Epoch 7 on Rank 0: Training Time = 14.694531202316284, Tokens_per_sec = 255407.15529886624
+Epoch 7 on Rank 0: Validation Loss = 5.11638742685318
+Epoch 7 on Rank 0: {'bleu': 4.620593897479908}
+Epoch 8 on Rank 0: Training Time = 14.875561952590942, Tokens_per_sec = 252034.3082175743
+Epoch 8 on Rank 0: Validation Loss = 5.155406504869461
+Epoch 8 on Rank 0: {'bleu': 5.141296012678012}
+Epoch 9 on Rank 0: Training Time = 14.789020299911499, Tokens_per_sec = 253640.9686254627
+Epoch 9 on Rank 0: Validation Loss = 5.218839645385742
+Epoch 9 on Rank 0: {'bleu': 4.523594512717739}
+Rank 0 training time: avg:14.878658342361451, std:0.4937598559748656,         tokens_per_second: avg: 254300.83295833477, std:2658.329639366154
+Job finished at: Sat Nov  1 01:46:00 EDT 2025

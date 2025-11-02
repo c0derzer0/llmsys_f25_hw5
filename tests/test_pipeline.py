@@ -72,7 +72,6 @@ def test_forward_0(batch_size, split_size):
     
     x = torch.randn(batch_size, 3).to('cuda:0')
     y0 = model(x).to('cpu')
-
     # move the last two layer to another device
     model[-2] = model[-2].to('cuda:1')
     model[-1] = WithDevice(nn.Sigmoid(), 'cuda:1')

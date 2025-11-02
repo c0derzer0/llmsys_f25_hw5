@@ -6,6 +6,7 @@ import torch.autograd
 import torch.cuda
 from .worker import Task, create_workers
 from .partition import _split_module
+from pipeline import partition
 
 def _clock_cycles(num_batches: int, num_partitions: int) -> Iterable[List[Tuple[int, int]]]:
     '''Generate schedules for each clock cycle.
@@ -26,7 +27,16 @@ def _clock_cycles(num_batches: int, num_partitions: int) -> Iterable[List[Tuple[
     This function should yield schedules for each clock cycle.
     '''
     # BEGIN ASSIGN5_2_1
-    raise NotImplementedError("Schedule Generation Not Implemented Yet")
+    # 
+    for k in range(num_batches + num_partitions - 1): # k = 0
+        current_clock_cycle = [] 
+        for j in range(num_partitions):  # 1
+            i = k-j  # 0-1
+            if 0 <= i < num_batches:
+                current_clock_cycle.append((i, j)) # (0,0)
+        
+        yield current_clock_cycle
+
     # END ASSIGN5_2_1
 
 class Pipe(nn.Module):
@@ -53,7 +63,13 @@ class Pipe(nn.Module):
         Please note that you should put the result on the last device. Putting the result on the same device as input x will lead to pipeline parallel training failing.
         '''
         # BEGIN ASSIGN5_2_2
-        raise NotImplementedError("Pipeline Parallel Not Implemented Yet")
+        micro_batches = list(torch.chunk(x, self.split_size, dim=0))
+        schedules =  _clock_cycles(len(micro_batches), len(self.partitions))
+        for schedule in schedules:
+            self.compute(micro_batches, schedule)
+        output = torch.cat(micro_batches, dim=0).to(device=self.devices[-1])
+        return output
+        
         # END ASSIGN5_2_2
 
     def compute(self, batches, schedule: List[Tuple[int, int]]) -> None:
@@ -69,6 +85,14 @@ class Pipe(nn.Module):
         devices = self.devices
 
         # BEGIN ASSIGN5_2_2
-        raise NotImplementedError("Pipeline Parallel Not Implemented Yet")
+        for micro_batch_idx, partition_idx in schedule:
+            partition = partitions[partition_idx]
+            micro_batch = batches[micro_batch_idx].to(devices[partition_idx])
+            self.in_queues[partition_idx].put(Task(lambda p=partition, mb=micro_batch: p(mb)))
+            
+        for micro_batch_idx, partition_idx in schedule:
+            result = self.out_queues[partition_idx].get()
+            if result[0]:
+                batches[micro_batch_idx] = result[1][1]
         # END ASSIGN5_2_2
 

@@ -1,0 +1,98 @@
+Sat Nov  1 13:50:08 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 560.35.03              Driver Version: 560.35.03      CUDA Version: 12.6     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA H100 80GB HBM3          On  |   00000000:3C:00.0 Off |                    0 |
+| N/A   14C    P0             67W /  700W |       4MiB /  81559MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+|   1  NVIDIA H100 80GB HBM3          On  |   00000000:C2:00.0 Off |                    0 |
+| N/A   13C    P0             66W /  700W |       4MiB /  81559MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+Job started at: Sat Nov  1 13:50:08 EDT 2025
+Running on node: w004.ib.bridges2.psc.edu
+Job ID: 35744568
+Working directory: /jet/home/tatavart/11986-llmsys/llmsys_f25_hw5
+Running dual GPU experiment (world_size=2, batch_size=128)
+
+
+
+
+
+
+Epoch 0 on Rank 1: Training Time = 8.688548803329468, Tokens_per_sec = 244210.53616007083
+Epoch 0 on Rank 0: Training Time = 8.32548451423645, Tokens_per_sec = 244267.6786959485
+Epoch 0 on Rank 0: Validation Loss = 6.448204517364502
+Epoch 0 on Rank 1: Validation Loss = 6.448204517364502
+Epoch 0 on Rank 0: {'bleu': 0.049131921168362444}
+Epoch 0 on Rank 1: {'bleu': 0.049131921168362444}
+Epoch 1 on Rank 0: Training Time = 8.240540504455566, Tokens_per_sec = 250349.00398095348
+Epoch 1 on Rank 1: Training Time = 7.557729959487915, Tokens_per_sec = 250269.72801196575
+Epoch 1 on Rank 1: Validation Loss = 5.825669467449188
+Epoch 1 on Rank 0: Validation Loss = 5.825669467449188
+Epoch 1 on Rank 0: {'bleu': 1.8545662693641072}
+Epoch 1 on Rank 1: {'bleu': 1.8545662693641072}
+Epoch 2 on Rank 0: Training Time = 8.024082660675049, Tokens_per_sec = 250359.64391011986
+Epoch 2 on Rank 1: Training Time = 7.56015157699585, Tokens_per_sec = 250389.9317850279
+Epoch 2 on Rank 1: Validation Loss = 5.571809411048889
+Epoch 2 on Rank 0: Validation Loss = 5.571809411048889
+Epoch 2 on Rank 0: {'bleu': 3.3497042613413344}
+Epoch 2 on Rank 1: {'bleu': 3.3497042613413344}
+Epoch 3 on Rank 0: Training Time = 7.895901918411255, Tokens_per_sec = 250803.1721158864
+Epoch 3 on Rank 1: Training Time = 7.550518274307251, Tokens_per_sec = 250853.24897761334
+Epoch 3 on Rank 1: Validation Loss = 5.388974666595459
+Epoch 3 on Rank 0: Validation Loss = 5.388974666595459
+Epoch 3 on Rank 0: {'bleu': 4.159063072429481}
+Epoch 3 on Rank 1: {'bleu': 4.159063072429481}
+Epoch 4 on Rank 1: Training Time = 7.557701587677002, Tokens_per_sec = 250865.11915308415
+Epoch 4 on Rank 0: Training Time = 7.997605085372925, Tokens_per_sec = 250919.40072040996
+Epoch 4 on Rank 1: Validation Loss = 5.413664162158966
+Epoch 4 on Rank 0: Validation Loss = 5.413664162158966
+Epoch 4 on Rank 0: {'bleu': 4.041080664428448}
+Epoch 4 on Rank 1: {'bleu': 4.041080664428448}
+Epoch 5 on Rank 0: Training Time = 8.114224672317505, Tokens_per_sec = 251025.49674622808
+Epoch 5 on Rank 1: Training Time = 7.560054540634155, Tokens_per_sec = 251122.58911227545
+Epoch 5 on Rank 1: Validation Loss = 5.278926312923431
+Epoch 5 on Rank 0: Validation Loss = 5.278926312923431
+Epoch 5 on Rank 0: {'bleu': 4.047059265192582}
+Epoch 5 on Rank 1: {'bleu': 4.047059265192582}
+Epoch 6 on Rank 1: Training Time = 7.5677080154418945, Tokens_per_sec = 250669.3197168365
+Epoch 6 on Rank 0: Training Time = 8.01122260093689, Tokens_per_sec = 250566.8045442843
+Epoch 6 on Rank 1: Validation Loss = 5.231778979301453
+Epoch 6 on Rank 0: Validation Loss = 5.231778979301453
+Epoch 6 on Rank 0: {'bleu': 4.158901001049015}
+Epoch 6 on Rank 1: {'bleu': 4.158901001049015}
+Epoch 7 on Rank 0: Training Time = 8.04115629196167, Tokens_per_sec = 250406.69745077047
+Epoch 7 on Rank 1: Training Time = 7.573237657546997, Tokens_per_sec = 250606.23392221984
+Epoch 7 on Rank 1: Validation Loss = 5.191967248916626
+Epoch 7 on Rank 0: Validation Loss = 5.191967248916626
+Epoch 7 on Rank 0: {'bleu': 4.552669735456942}
+Epoch 7 on Rank 1: {'bleu': 4.552669735456942}
+Epoch 8 on Rank 1: Training Time = 7.565166234970093, Tokens_per_sec = 250966.7401090511
+Epoch 8 on Rank 0: Training Time = 8.226009130477905, Tokens_per_sec = 250781.8403402958
+Epoch 8 on Rank 0: Validation Loss = 5.204046607017517
+Epoch 8 on Rank 1: Validation Loss = 5.204046607017517
+Epoch 8 on Rank 0: {'bleu': 3.416004279297411}
+Epoch 8 on Rank 1: {'bleu': 3.416004279297411}
+Epoch 9 on Rank 1: Training Time = 7.565659523010254, Tokens_per_sec = 250717.90033803514
+Epoch 9 on Rank 0: Training Time = 8.237847805023193, Tokens_per_sec = 250846.9932419566
+Epoch 9 on Rank 0: Validation Loss = 5.16476982831955
+Epoch 9 on Rank 1: Validation Loss = 5.16476982831955
+Epoch 9 on Rank 0: {'bleu': 5.353114507027404}
+Rank 0 training time: avg:8.11140751838684, std:0.131766627349889,         tokens_per_second: avg: 250032.67317468533, std:1935.3901021944096
+Epoch 9 on Rank 1: {'bleu': 5.353114507027404}
+Rank 1 training time: avg:7.674647617340088, std:0.3380200251461661,         tokens_per_second: avg: 250067.13472861797, std:1967.2256581495997
+Job finished at: Sat Nov  1 13:55:53 EDT 2025

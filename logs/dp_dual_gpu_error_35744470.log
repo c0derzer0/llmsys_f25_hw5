@@ -1,0 +1,47 @@
+/jet/home/tatavart/.conda/envs/minitorch-cuda-2/lib/python3.9/site-packages/huggingface_hub/file_download.py:942: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+/jet/home/tatavart/.conda/envs/minitorch-cuda-2/lib/python3.9/site-packages/huggingface_hub/file_download.py:942: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+[W socket.cpp:464] [c10d] The server socket has failed to bind to [::]:11868 (errno: 98 - Address already in use).
+[W socket.cpp:464] [c10d] The server socket has failed to bind to 0.0.0.0:11868 (errno: 98 - Address already in use).
+[E socket.cpp:500] [c10d] The server socket has failed to listen on any local network address.
+Process Process-1:
+Traceback (most recent call last):
+  File "/jet/home/tatavart/.conda/envs/minitorch-cuda-2/lib/python3.9/multiprocessing/process.py", line 315, in _bootstrap
+    self.run()
+  File "/jet/home/tatavart/.conda/envs/minitorch-cuda-2/lib/python3.9/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/jet/home/tatavart/11986-llmsys/llmsys_f25_hw5/project/run_data_parallel.py", line 73, in run_dp
+    setup(rank, world_size, backend)
+  File "/jet/home/tatavart/11986-llmsys/llmsys_f25_hw5/project/run_data_parallel.py", line 53, in setup
+    dist.init_process_group(backend=backend, world_size=world_size, rank=rank)
+  File "/jet/home/tatavart/.conda/envs/minitorch-cuda-2/lib/python3.9/site-packages/torch/distributed/c10d_logger.py", line 86, in wrapper
+    func_return = func(*args, **kwargs)
+  File "/jet/home/tatavart/.conda/envs/minitorch-cuda-2/lib/python3.9/site-packages/torch/distributed/distributed_c10d.py", line 1177, in init_process_group
+    store, rank, world_size = next(rendezvous_iterator)
+  File "/jet/home/tatavart/.conda/envs/minitorch-cuda-2/lib/python3.9/site-packages/torch/distributed/rendezvous.py", line 246, in _env_rendezvous_handler
+    store = _create_c10d_store(master_addr, master_port, rank, world_size, timeout, use_libuv)
+  File "/jet/home/tatavart/.conda/envs/minitorch-cuda-2/lib/python3.9/site-packages/torch/distributed/rendezvous.py", line 174, in _create_c10d_store
+    return TCPStore(
+torch.distributed.DistNetworkError: The server socket has failed to listen on any local network address. The server socket has failed to bind to [::]:11868 (errno: 98 - Address already in use). The server socket has failed to bind to 0.0.0.0:11868 (errno: 98 - Address already in use).
+Training (rank 1/2 epoch 0/10):   0%|          | 0/40 [00:00<?, ?it/s]Training (rank 1/2 epoch 0/10):   0%|          | 0/40 [00:01<?, ?it/s]
+Process Process-2:
+Traceback (most recent call last):
+  File "/jet/home/tatavart/.conda/envs/minitorch-cuda-2/lib/python3.9/multiprocessing/process.py", line 315, in _bootstrap
+    self.run()
+  File "/jet/home/tatavart/.conda/envs/minitorch-cuda-2/lib/python3.9/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/jet/home/tatavart/11986-llmsys/llmsys_f25_hw5/project/run_data_parallel.py", line 119, in run_dp
+    avg_tokens_per_sec, _  = train(
+  File "/jet/home/tatavart/11986-llmsys/llmsys_f25_hw5/project/utils.py", line 145, in train
+    average_gradients_fn(model)
+  File "/jet/home/tatavart/11986-llmsys/llmsys_f25_hw5/project/run_data_parallel.py", line 39, in average_gradients
+    dist.all_reduce(paramter.grad.data, op=dist.ReduceOp.SUM)
+  File "/jet/home/tatavart/.conda/envs/minitorch-cuda-2/lib/python3.9/site-packages/torch/distributed/c10d_logger.py", line 72, in wrapper
+    return func(*args, **kwargs)
+  File "/jet/home/tatavart/.conda/envs/minitorch-cuda-2/lib/python3.9/site-packages/torch/distributed/distributed_c10d.py", line 1992, in all_reduce
+    work = group.allreduce([tensor], opts)
+torch.distributed.DistBackendError: NCCL error in: ../torch/csrc/distributed/c10d/ProcessGroupNCCL.cpp:1691, unhandled system error (run with NCCL_DEBUG=INFO for details), NCCL version 2.19.3
+ncclSystemError: System call (e.g. socket, malloc) or external library call failed or device error. 
+Last error:
+nvmlDeviceGetHandleByPciBusId() failed: Not Found

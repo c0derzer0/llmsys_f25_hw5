@@ -15,7 +15,7 @@ class Partition():
     def __getitem__(self, index):
         '''Given index, get the data according to the partitioned index'''
         # BEGIN ASSIGN5_1_1
-        raise NotImplementedError("Data Parallel Not Implemented Yet")
+        return self.data[self.index[index]]
         # END ASSIGN5_1_1
 
 class DataPartitioner():
@@ -29,7 +29,18 @@ class DataPartitioner():
         2. Create different partitions of indices according to `sizes` and store in `self.partitions`
         '''
         # BEGIN ASSIGN5_1_1
-        raise NotImplementedError("Data Parallel Not Implemented Yet")
+        indices = [i for i in range(len(data))]
+        rng.shuffle(indices)
+        for i, size in enumerate(sizes):
+            length = len(indices)
+            if i == 0:
+                end_idx = int(size * length)
+                self.partitions.append(indices[:end_idx])
+            else:
+                end_idx = min(int(size * length) + prev_idx, length)
+                self.partitions.append(indices[prev_idx:end_idx])
+            prev_idx = end_idx
+
         # END ASSIGN5_1_1
 
     def use(self, partition):
@@ -38,7 +49,7 @@ class DataPartitioner():
         Just one line of code. Think it simply.
         '''
         # BEGIN ASSIGN5_1_1
-        raise NotImplementedError("Data Parallel Not Implemented Yet")
+        return Partition(self.data, self.partitions[partition])
         # END ASSIGN5_1_1
 
 def partition_dataset(rank, world_size, dataset, batch_size=128, collate_fn=None):
@@ -54,5 +65,13 @@ def partition_dataset(rank, world_size, dataset, batch_size=128, collate_fn=None
     4. Wrap the dataset with `DataLoader`, remember to customize the `collate_fn`
     """
     # BEGIN ASSIGN5_1
-    raise NotImplementedError("Data Parallel Not Implemented Yet")
+    partitioned_batch_size = int(batch_size/world_size)
+    #print(partitioned_batch_size)
+    sizes = [1/world_size] * (world_size)
+    #print(sizes)
+    data_partitioner = DataPartitioner(dataset, sizes)
+    partition_dataset = data_partitioner.use(rank)
+    return DataLoader(partition_dataset, batch_size=partitioned_batch_size, collate_fn=collate_fn)
+
+
     # END ASSIGN5_1

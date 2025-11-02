@@ -41,7 +41,15 @@ class GPT2ModelParallel(GPT2ModelCustom):
 
         # BEGIN ASSIGN5_2_3
         pipe = None
-        raise NotImplementedError("Pipeline Parallel Not Implemented Yet")
+        self.pipeline_parallel = True
+        blocks = []
+        for block in self.h:
+            blocks.append(block)
+            device = _retrieve_device(block)
+            blocks.append(WithDevice(ExtractFirstItem(), device))
+        
+        module_list = nn.Sequential(*blocks)
+        pipe = Pipe(module_list, split_size)
         # END ASSIGN5_2_3
         self.h_pp = pipe
 

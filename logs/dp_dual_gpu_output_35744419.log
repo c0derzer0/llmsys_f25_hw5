@@ -1,0 +1,46 @@
+Sat Nov  1 12:50:46 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 560.35.03              Driver Version: 560.35.03      CUDA Version: 12.6     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA H100 80GB HBM3          On  |   00000000:45:00.0 Off |                    0 |
+| N/A   15C    P0             66W /  700W |       1MiB /  81559MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+|   1  NVIDIA H100 80GB HBM3          On  |   00000000:C2:00.0 Off |                    0 |
+| N/A   13C    P0             66W /  700W |       1MiB /  81559MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+Job started at: Sat Nov  1 12:50:46 EDT 2025
+Running on node: w004.ib.bridges2.psc.edu
+Job ID: 35744419
+Working directory: /jet/home/tatavart/11986-llmsys/llmsys_f25_hw5
+Running dual GPU experiment (world_size=2, batch_size=128)
+The repository for bbaaaa/iwslt14-de-en-preprocess contains custom code which must be executed to correctly load the dataset. You can inspect the repository content at https://hf.co/datasets/bbaaaa/iwslt14-de-en-preprocess.
+You can avoid this prompt in future by passing the argument `trust_remote_code=True`.
+
+Do you wish to run the custom code? [y/N] The repository for bbaaaa/iwslt14-de-en-preprocess contains custom code which must be executed to correctly load the dataset. You can inspect the repository content at https://hf.co/datasets/bbaaaa/iwslt14-de-en-preprocess.
+You can avoid this prompt in future by passing the argument `trust_remote_code=True`.
+
+Do you wish to run the custom code? [y/N] 
+
+
+
+
+
+Epoch 0 on Rank 0: Training Time = 11.244507312774658, Tokens_per_sec = 239787.44475528522
+Epoch 0 on Rank 1: Training Time = 11.272587537765503, Tokens_per_sec = 239486.62427113642
+Epoch 0 on Rank 0: Validation Loss = 6.439259350299835
+Epoch 0 on Rank 1: Validation Loss = 6.439259350299835
+Job finished at: Sat Nov  1 12:53:25 EDT 2025

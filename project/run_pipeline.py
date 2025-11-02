@@ -35,7 +35,7 @@ def run_pp(
     learning_rate=1e-4,
     device='cuda',
     model_parallel_mode=None):
-    workdir = f'./workdir'
+    workdir = f'./workdir_model_parallel_1'
     os.makedirs(workdir, exist_ok=True)
 
     config = AutoConfig.from_pretrained('gpt2')
@@ -45,7 +45,7 @@ def run_pp(
     first_device = "cuda:0" if device_count > 0 else "cpu"
 
 
-    split_size = math.ceil(batch_size/n_chunk)
+    split_size = n_chunk #math.ceil(batch_size/n_chunk)
     
     model = GPT2LMHeadModelParallel(config=config)
     if model_parallel_mode == 'model_parallel':

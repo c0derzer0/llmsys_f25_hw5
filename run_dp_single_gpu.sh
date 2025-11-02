@@ -1,0 +1,29 @@
+#!/bin/bash
+#SBATCH -N 1
+#SBATCH -p GPU-shared
+#SBATCH -t 24:00:00
+#SBATCH --gpus=h100-80:1
+#SBATCH --output=dp_single_gpu_output_%j.log      # Standard output file (%j will be replaced with job ID)
+#SBATCH --error=dp_single_gpu_error_%j.log        # Standard error file (%j will be replaced with job ID)
+
+# load conda
+module load anaconda3/2024.10-1
+
+# activate environment
+conda activate minitorch-cuda-2
+nvidia-smi
+
+cd /jet/home/tatavart/11986-llmsys/llmsys_f25_hw5
+
+# Print job info
+echo "Job started at: $(date)"
+echo "Running on node: $(hostname)"
+echo "Job ID: $SLURM_JOB_ID"
+echo "Working directory: $(pwd)"
+
+# Run single GPU data parallel training (world_size=1, batch_size=64)
+echo "Running single GPU experiment (world_size=1, batch_size=64)"
+python3 project/run_data_parallel.py --world_size 1 --batch_size 64 --n_epochs 10
+
+echo "Job finished at: $(date)"
+
